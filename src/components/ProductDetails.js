@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
@@ -22,8 +22,8 @@ const ProductDetails = ({product}) => {
     </div>
 };
 
-const mapStateToProps = state => ({
-    product: state.products.filter(p => p.id == window.location.pathname.substring(1))[0]
+const mapStateToProps = (state, props) => ({
+    product: state.products.filter(p => p.id == props.match.params.id)[0]
 });
 
-export default connect(mapStateToProps)(ProductDetails);
+export default withRouter(connect(mapStateToProps)(ProductDetails));

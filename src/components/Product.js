@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Button} from "reactstrap";
 import {connect} from "react-redux";
@@ -8,13 +8,7 @@ import {Link} from "react-router-dom";
 
 const Product = ({product, dispatch}) => {
 
-    const [state, setState] = useState(product);
-
     const handleAmountChange = amount => {
-        setState({
-            ...state,
-            amount
-        });
         dispatch(editProductsAmountAction({id: product.id, amount}));
     };
 
@@ -46,7 +40,6 @@ const Product = ({product, dispatch}) => {
             <div>
                 <span>Total: {product.amount * product.price}$</span>
             </div>
-
         </div>
     </div>
 };

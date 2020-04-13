@@ -62,7 +62,7 @@ code {
 .product-list-item {
   width: 90%;
   padding-left: 10px;
-  position: absolute;
+  height: 130px;
   background-color: #223951;
   border-radius: 5px;
   margin-bottom: 5px;

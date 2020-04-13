@@ -1,23 +1,17 @@
-import React, {useState} from "react";
+import React from "react";
 import {connect} from "react-redux";
 import Product from "./Product";
 
 const ProductList = ({products}) => {
 
     const getTotalPrice = () => {
-        let totalPrice = 0;
-        products.forEach(p => {
-            totalPrice+= p.price*p.amount;
-        });
-        return totalPrice;
+        return products.reduce((accumulator, product) => accumulator + product.price * product.amount, 0);
     };
 
     return <div className='split right text-center'>
         <h4>Product list</h4>
         {products.map(p => <Product key={p.id} product={p}/>)}
-        <span>Total:</span>
-        {getTotalPrice()}
-        <span>$</span>
+        <span>Total: {getTotalPrice()}$</span>
     </div>
 };
 
